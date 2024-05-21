@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:8080']
+    scheme: https
+    tls_config:
+      ca_file: /certs/ca.crt
+      cert_file: /certs/client.crt
+      key_file: /certs/client.key
+      server_name: service_name_test
+      insecure_skip_verify: false
